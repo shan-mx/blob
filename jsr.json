@@ -1,0 +1,8 @@
+{
+  "name": "@mxkit/blob",
+  "version": "0.1.2",
+  "exports": "./src/index.ts",
+  "publish": {
+    "include": ["jsr.json", "README.md", "src"]
+  }
+}
