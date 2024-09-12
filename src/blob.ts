@@ -52,9 +52,11 @@ export class Blob {
     contentType?: string;
     contentEncoding?: string;
   }): Promise<string> {
+    const filePath = this.tryFixFilePath(params.filePath);
+
     const command = new PutObjectCommand({
       Bucket: this.bucketName,
-      Key: this.tryFixFilePath(params.filePath),
+      Key: filePath,
       Body: params.body,
       ContentEncoding: params.contentEncoding,
       ContentType: params.contentType,
@@ -67,7 +69,7 @@ export class Blob {
       );
     }
 
-    return `${this.baseUrl}/${params.filePath}`;
+    return `${this.baseUrl}/${filePath}`;
   }
 
   /**
